@@ -83,69 +83,67 @@ class _MyHomePageState extends State<MyHomePage> {
               child: GestureDetector(
                 onTap: () {
                   showBottomSheet(
+                      backgroundColor: Colors.black,
                       context: context,
                       builder: (context) {
-                        return Container(
-                          padding: const EdgeInsets.all(20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              //const SizedBox(height: 10),
-                              Text(
-                                data[index]['title'],
-                                style: const TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              const SizedBox(height: 10),
-                              Image.network(
-                                data[index]['urlToImage'] ?? 'No image',
-                                fit: BoxFit.cover,
-                                width: double.infinity,
-                                height: 200,
-                                errorBuilder: (context, error, stackTrace) {
-                                  return const SizedBox();
-                                },
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(data[index]['author'] ?? 'No author'),
-                              Text(
-                                formatDateToDisplay(data[index]['publishedAt']),
-                                style: const TextStyle(color: Colors.grey),
-                              ),
-                              const SizedBox(height: 10),
-                              Text(
-                                data[index]['description'],
-                                style: const TextStyle(fontSize: 16),
-                              ),
-
-                              const SizedBox(height: 10),
-                              data[index]['url'] != null
-                                  ? Text(
-                                      '${data[index]['url']}',
-                                      style: const TextStyle(
-                                        color: Colors.blue,
-                                      ),
-                                    )
-                                  : const SizedBox(),
-                              const SizedBox(height: 20),
-                              ElevatedButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.blueGrey.shade900,
-                                  foregroundColor: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
+                        return SingleChildScrollView(
+                          child: Container(
+                            padding: const EdgeInsets.all(20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                //const SizedBox(height: 10),
+                                Text(
+                                  data[index]['title'],
+                                  style: const TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                child: const Text('Close'),
-                              ),
-                            ],
+                                const SizedBox(height: 10),
+                                Image.network(
+                                  data[index]['urlToImage'] ?? 'No image',
+                                  fit: BoxFit.cover,
+                                  width: double.infinity,
+                                  height: 200,
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return const SizedBox();
+                                  },
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Text(data[index]['author'] ?? 'No author'),
+                                Text(
+                                  formatDateToDisplay(
+                                      data[index]['publishedAt']),
+                                  style: const TextStyle(color: Colors.grey),
+                                ),
+                                const SizedBox(height: 10),
+                                Text(
+                                  data[index]['description'],
+                                  style: const TextStyle(fontSize: 16),
+                                ),
+
+                                const SizedBox(height: 10),
+                                data[index]['url'] != null
+                                    ? Text(
+                                        '${data[index]['url']}',
+                                        style: const TextStyle(
+                                          color: Colors.blue,
+                                        ),
+                                      )
+                                    : const SizedBox(),
+                                const SizedBox(height: 20),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text('Close',
+                                      style: TextStyle(fontSize: 18)),
+                                ),
+                              ],
+                            ),
                           ),
                         );
                       });
